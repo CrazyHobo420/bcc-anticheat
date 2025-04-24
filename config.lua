@@ -183,24 +183,24 @@ Config.Commands = { -- Blacklisted commands. This can be used to blacklist cheat
 Config.Keys = { -- Blacklist certain keys from being pressed. This can be used to blacklist cheat menu keys
     active = true,
     action = "warn", -- Options: "kick", "warn"
-    webhook = "", -- Discord webhook URL for key violations
+    webhook = "YOUR_DISCORD_WEBHOOK_URL_HERE",
     list = {
-        {{47, 21}, "Shift + G Keys"},             -- Known cheat combos
-        {{21, 113}, "Shift + F2"},  -- Normally used for Steam Overlay - Remove if causing issues.
-        {{21, 114}, "Shift + F3"},
-        {{21, 115}, "Shift + F4"},
-        {{21, 119}, "Shift + F8"},
-        {{19, 113}, "Ctrl + F2"},
-        {{19, 114}, "Ctrl + F3"},
-        {{19, 115}, "Ctrl + F4"},
-        {{19, 119}, "Ctrl + F8"},
-        {{19, 96},  "Ctrl + NumPad 0"},
-        {{19, 101}, "Ctrl + NumPad 5"},
-        {{19, 36},  "Ctrl + Home"},
-        {{19, 45},  "Ctrl + Insert"},
-        {{19, 46},  "Ctrl + Delete"},
-        {{19, 33},  "Ctrl + PageUp"},
-        {{19, 34},  "Ctrl + PageDown"}
+        {{0x8FFC75D6, 0x7065027D}, "Shift + G Keys"},             -- Known cheat combos (Shift = 0x8FFC75D6, G = 0x7065027D)
+        {{0x8FFC75D6, 0x3C0A40F2}, "Shift + F2"},  -- Shift + F2
+        {{0x8FFC75D6, 0x0F39F3E0}, "Shift + F3"},  -- Shift + F3
+        {{0x8FFC75D6, 0x41F583C8}, "Shift + F4"},  -- Shift + F4
+        {{0x8FFC75D6, 0x4E8F95A2}, "Shift + F8"},  -- Shift + F8
+        {{0xDB096B85, 0x3C0A40F2}, "Ctrl + F2"},   -- Ctrl + F2
+        {{0xDB096B85, 0x0F39F3E0}, "Ctrl + F3"},   -- Ctrl + F3
+        {{0xDB096B85, 0x41F583C8}, "Ctrl + F4"},   -- Ctrl + F4
+        {{0xDB096B85, 0x4E8F95A2}, "Ctrl + F8"},   -- Ctrl + F8
+        {{0xDB096B85, 0xE6F612E4}, "Ctrl + NumPad 0"}, -- Ctrl + NumPad 0
+        {{0xDB096B85, 0x1F6D95E5}, "Ctrl + NumPad 5"}, -- Ctrl + NumPad 5
+        {{0xDB096B85, 0x52447C53}, "Ctrl + Home"},    -- Ctrl + Home
+        {{0xDB096B85, 0x4AF4D473}, "Ctrl + Insert"},  -- Ctrl + Insert
+        {{0xDB096B85, 0x4AF4D473}, "Ctrl + Delete"},  -- Ctrl + Delete
+        {{0xDB096B85, 0x446258B6}, "Ctrl + PageUp"},  -- Ctrl + PageUp
+        {{0xDB096B85, 0x3C3DD371}, "Ctrl + PageDown"} -- Ctrl + PageDown
     },
     lang = {
         kickreason = "Cheat Menu detected"
