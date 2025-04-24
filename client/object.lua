@@ -7,6 +7,7 @@ if Config.Objects.active then
 				Wait(1)
 				if Config.Objects.blacklist[GetEntityModel(object)] then
 					DeleteObjects(object)
+					TriggerServerEvent("ac:kick", Config.Objects.lang.kickreason, Config.Objects)
 				end
 				finished, object = FindNextObject(handle)
 			until not finished
