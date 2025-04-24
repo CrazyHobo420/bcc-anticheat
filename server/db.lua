@@ -33,7 +33,11 @@ if Config.DB.active then
     Citizen.CreateThread(function()
         while true do
             if #Config.DB.rolechecks > 0 then
-                exports.ghmattimysql:execute('SELECT `identifier`,  `steamname`,  `charidentifier`, `group`, `firstname`, `lastname` FROM characters', {}, function(characters)
+                -- Create a comma-separated list of roles to check
+                local roleList = table.concat(Config.DB.rolechecks, "','")
+                
+                -- Only fetch characters that have one of the roles we're checking
+                exports.ghmattimysql:execute('SELECT `identifier`, `steamname`, `charidentifier`, `group`, `firstname`, `lastname` FROM characters WHERE `group` IN (\'' .. roleList .. '\')', {}, function(characters)
                     if #characters > 0 then
                         local temp = {}
                         for k, current in ipairs(characters) do
