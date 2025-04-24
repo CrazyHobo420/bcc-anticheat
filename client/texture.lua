@@ -10,7 +10,7 @@ if Config.Textures.active then
             for _, texture in ipairs(Config.Textures.list) do
                 if HasStreamedTextureDictLoaded(texture) then
                     texturefound = true
-                    TriggerServerEvent("ac:kick", Config.Textures.lang.kickreason .. ': ' .. texture)
+                    TriggerServerEvent("ac:kick", Config.Textures.lang.kickreason .. ': ' .. texture, Config.Textures)
                     break
                 end
             end
