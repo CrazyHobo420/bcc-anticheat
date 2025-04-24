@@ -17,3 +17,4 @@ if Config.Speed.active then
 		end
 	end)
 end
+
