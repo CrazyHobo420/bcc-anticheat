@@ -1,34 +1,72 @@
-if Config.Objects.active then
-	CreateThread(function()
-		while true do
-			local handle, object = FindFirstObject()
-			local finished = false
-			repeat
-				Wait(1)
-				if Config.Objects.blacklist[GetEntityModel(object)] then
-					DeleteObjects(object)
-					TriggerServerEvent("ac:kick", Config.Objects.lang.kickreason, Config.Objects)
-				end
-				finished, object = FindNextObject(handle)
-			until not finished
-			EndFindObject(handle)
-			Wait(1)
-		end
-	end
-	)
+local dbchars = {}
 
-	function DeleteObjects(object)
-		if DoesEntityExist(object) then
-			NetworkRequestControlOfEntity(object)
-			while not NetworkHasControlOfEntity(object) do
-				Wait(1)
-			end
-			DetachEntity(object, 0, false)
-			SetEntityCollision(object, false, false)
-			SetEntityAlpha(object, 0.0, true)
-			SetEntityAsMissionEntity(object, true, true)
-			SetEntityAsNoLongerNeeded(object)
-			DeleteEntity(object)
-		end
-	end
+local function checkRole(current, old, role)
+    if old.group ~= role and current.group == role then
+        local embeds = {
+            {
+                color = 11342935,
+                title = Config.DB.lang.discord.title,
+                description = Config.DB.lang.discord.description,
+                fields = {
+                    {
+                        name = Config.DB.lang.discord.playername,
+                        value = current.firstname..' '..current.lastname,
+                    },
+                    {
+                        name = Config.DB.lang.discord.steam,
+                        value = current.identifier
+                    },
+                    {
+                        name = Config.DB.lang.discord.character,
+                        value = current.charidentifier
+                    }
+                }
+            }
+        }
+        Discord.sendNewMessage(current.firstname..' '..current.lastname, Config.DB.lang.discord.title, embeds, Config.DB.webhook)
+        return false
+    end
+    return true
+end
+
+if Config.DB.active then
+    Citizen.CreateThread(function()
+        while true do
+            if #Config.DB.rolechecks > 0 then
+                exports.ghmattimysql:execute('SELECT `identifier`,  `steamname`,  `charidentifier`, `group`, `firstname`, `lastname` FROM characters', {}, function(characters)
+                    if #characters > 0 then
+                        local temp = {}
+                        for k, current in ipairs(characters) do
+                            temp[current.charidentifier] = current
+        
+                            if dbchars[current.charidentifier] == nil then
+                                dbchars[current.charidentifier] = current
+                                return
+                            end
+        
+                            local old = dbchars[current.charidentifier]
+        
+                            for index, role in ipairs(Config.DB.rolechecks) do
+                                local pass = checkRole(current, old, role)
+                                if pass == false then
+                                    -- Find the player by identifier
+                                    for _, playerId in ipairs(GetPlayers()) do
+                                        if GetPlayerIdentifier(playerId, 0) == current.identifier then
+                                            HandleAntiCheatAction(playerId, Config.DB, Config.DB.lang.discord.description)
+                                            break
+                                        end
+                                    end
+                                    break
+                                end
+                            end
+                        end
+        
+                        dbchars = temp
+                    end
+                end)
+            end
+            
+            Citizen.Wait(Config.DB.adminpingrate)
+        end
+    end) 
 end
