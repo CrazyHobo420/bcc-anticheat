@@ -1,4 +1,4 @@
--- Credit: Badger
+-- Credit: Badger -- Updated by Hobo
 if Config.Keys.active then
     Citizen.CreateThread(function()
         while true do
@@ -12,13 +12,13 @@ if Config.Keys.active then
                 if #keyCombo == 1 then
                     local key1 = keyCombo[1];
                     if IsDisabledControlJustReleased(0, key1) then
-                        TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr)
+                        TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr, Config.Keys)
                     end
                 elseif #keyCombo == 2 then
                     local key1 = keyCombo[1];
                     local key2 = keyCombo[2];
                     if IsDisabledControlPressed(0, key1) and IsDisabledControlPressed(0, key2) then
-                        TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr)
+                        TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr, Config.Keys)
                         Wait(20000); -- Wait 20 seconds
                     end
                 elseif #keyCombo == 3 then
@@ -26,16 +26,16 @@ if Config.Keys.active then
                     local key2 = keyCombo[2];
                     local key3 = keyCombo[3];
                     if IsDisabledControlPressed(0, key1) and IsDisabledControlPressed(0, key2) and IsDisabledControlPressed(0, key3) then
-                            TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr)
+                            TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr, Config.Keys)
                     end
                     Wait(20000); -- Wait 20 seconds
-                elseif #keyCombo == 4 then
+                
                     local key1 = keyCombo[1];
                     local key2 = keyCombo[2];
                     local key3 = keyCombo[3];
                     local key4 = keyCombo[4];
                     if IsDisabledControlPressed(0, key1) and IsDisabledControlPressed(0, key2) and IsDisabledControlPressed(0, key3) and IsDisabledControlPressed(0, key4) then
-                        TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr)
+                        TriggerServerEvent("ac:kick", Config.Keys.lang.kickreason .. ': ' .. keyStr, Config.Keys)
                     end
                     Wait(20000); -- Wait 20 seconds
                 end
