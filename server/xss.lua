@@ -9,7 +9,14 @@ if Config.XSS.active then
         if string.find(cname, "<" or ">") then
             deferrals.done(Config.XSS.lang.kick)
             CancelEvent()
-            Discord.sendMessage(_source, Config.Discord.lang.kick .. Config.XSS.lang.reason)
+            -- For connecting players, we need to handle the action differently
+            if Config.XSS.action == "kick" then
+                Discord.sendMessage(_source, Config.Discord.lang.kick .. Config.XSS.lang.reason, Config.XSS.webhook)
+            elseif Config.XSS.action == "warn" then
+                Discord.sendMessage(_source, Config.Discord.lang.warn .. Config.XSS.lang.reason, Config.XSS.webhook)
+            else
+                Discord.sendMessage(_source, Config.Discord.lang.log .. Config.XSS.lang.reason, Config.XSS.webhook)
+            end
         else
             deferrals.done()
         end
