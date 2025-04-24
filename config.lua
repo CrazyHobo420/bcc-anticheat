@@ -186,7 +186,7 @@ Config.Keys = { -- Blacklist certain keys from being pressed. This can be used t
     webhook = "", -- Discord webhook URL for key violations
     list = {
         {{47, 21}, "Shift + G Keys"},             -- Known cheat combos
-        {{21, 113}, "Shift + F2"},  -- Used for Steam Overlay - Remove if causing issues.
+        {{21, 113}, "Shift + F2"},  -- Normally used for Steam Overlay - Remove if causing issues.
         {{21, 114}, "Shift + F3"},
         {{21, 115}, "Shift + F4"},
         {{21, 119}, "Shift + F8"},
