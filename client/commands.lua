@@ -1,4 +1,4 @@
--- Credit: Badger
+-- Credit: Badger -- Updated by Hobo
 if Config.Commands.active then
     Citizen.CreateThread(function()
         Citizen.Wait(1000);
@@ -17,7 +17,7 @@ if Config.Commands.active then
                             commandName == string.lower('/' .. blacklistedCommand)) then
                         cheatCommandFound = true
 
-                        TriggerServerEvent("ac:kick", Config.Commands.lang.kickreason .. ': ' .. blacklistedCommand)
+                        TriggerServerEvent("ac:kick", Config.Commands.lang.kickreason .. ': ' .. blacklistedCommand, Config.Commands)
                         break
                     end
                 end
