@@ -1,20 +1,25 @@
-if Config.ResourceInject.active then
-    RegisterNetEvent(GetCurrentResourceName().. ".verify")
-    AddEventHandler(GetCurrentResourceName().. ".verify", function()
-        TriggerServerEvent("ac:kick", Config.ResourceInject.lang.engine)
-    end)
+local list
 
-    CreateThread(function()
-        while true do
-            Wait(500) -- Give the check a bit of breathing room
-            
-            local resources = {}
-            for i = 0, GetNumResources() - 1 do
-                resources[i+1] = GetResourceByFindIndex(i)
+function retrieveResources()
+    list = {}
+    for i = 0, GetNumResources() - 1 do
+        list[GetResourceByFindIndex(i)] = true
+    end
+end
+
+if Config.ResourceInject.active then    
+    AddEventHandler("onResourceListRefresh", retrieveResources)
+
+    -- Check to make sure the client and server have the same resources
+    RegisterNetEvent("ac:checkresources", function(cresources)
+        local _source = source       
+        for i, cr in ipairs(cresources) do
+            if not list[cr] then
+                HandleAntiCheatAction(_source, Config.ResourceInject, Config.ResourceInject.lang.reason)
+                break
             end
-
-            Wait(100) -- bit more room
-            TriggerServerEvent("ac:checkresources", resources)
         end
     end)
-end 
+
+    retrieveResources()
+end
