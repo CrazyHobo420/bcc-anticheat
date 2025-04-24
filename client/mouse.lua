@@ -18,7 +18,7 @@ function startMouseSpamCheck()
             Wait(1)
 
             if infractions > maxspaminfractions and kicked == false then
-                TriggerServerEvent("ac:kick", Config.SpamClick.lang.kickreason)
+                TriggerServerEvent("ac:kick", Config.SpamClick.lang.kickreason, Config.SpamClick)
                 kicked = true
             end
 
