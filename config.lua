@@ -185,22 +185,22 @@ Config.Keys = { -- Blacklist certain keys from being pressed. This can be used t
     action = "warn", -- Options: "kick", "warn"
     webhook = "YOUR_DISCORD_WEBHOOK_URL_HERE",
     list = {
-        {{0x8FFC75D6, 0x7065027D}, "Shift + G Keys"},             -- Known cheat combos (Shift = 0x8FFC75D6, G = 0x7065027D)
-        {{0x8FFC75D6, 0x3C0A40F2}, "Shift + F2"},  -- Shift + F2
-        {{0x8FFC75D6, 0x0F39F3E0}, "Shift + F3"},  -- Shift + F3
-        {{0x8FFC75D6, 0x41F583C8}, "Shift + F4"},  -- Shift + F4
-        {{0x8FFC75D6, 0x4E8F95A2}, "Shift + F8"},  -- Shift + F8
-        {{0xDB096B85, 0x3C0A40F2}, "Ctrl + F2"},   -- Ctrl + F2
-        {{0xDB096B85, 0x0F39F3E0}, "Ctrl + F3"},   -- Ctrl + F3
-        {{0xDB096B85, 0x41F583C8}, "Ctrl + F4"},   -- Ctrl + F4
-        {{0xDB096B85, 0x4E8F95A2}, "Ctrl + F8"},   -- Ctrl + F8
-        {{0xDB096B85, 0xE6F612E4}, "Ctrl + NumPad 0"}, -- Ctrl + NumPad 0
-        {{0xDB096B85, 0x1F6D95E5}, "Ctrl + NumPad 5"}, -- Ctrl + NumPad 5
-        {{0xDB096B85, 0x52447C53}, "Ctrl + Home"},    -- Ctrl + Home
-        {{0xDB096B85, 0x4AF4D473}, "Ctrl + Insert"},  -- Ctrl + Insert
-        {{0xDB096B85, 0x4AF4D473}, "Ctrl + Delete"},  -- Ctrl + Delete
-        {{0xDB096B85, 0x446258B6}, "Ctrl + PageUp"},  -- Ctrl + PageUp
-        {{0xDB096B85, 0x3C3DD371}, "Ctrl + PageDown"} -- Ctrl + PageDown
+        {{0x8FFC75D6, 0x760A9C6F}, "Shift + G"},             -- Left Shift + G
+        {{0x8FFC75D6, 0xE885EF16}, "Shift + F2"},            -- Left Shift + F2
+        {{0x8FFC75D6, 0x41AC83D1}, "Shift + F3"},            -- Left Shift + F3
+        {{0x8FFC75D6, 0x2E99F000}, "Shift + F4"},            -- Left Shift + F4
+        {{0x8FFC75D6, 0x9359A46D}, "Shift + F8"},            -- Left Shift + F8
+        {{0xDB096B85, 0xE885EF16}, "Ctrl + F2"},             -- Left Control + F2
+        {{0xDB096B85, 0x41AC83D1}, "Ctrl + F3"},             -- Left Control + F3
+        {{0xDB096B85, 0x2E99F000}, "Ctrl + F4"},             -- Left Control + F4
+        {{0xDB096B85, 0x9359A46D}, "Ctrl + F8"},             -- Left Control + F8
+        {{0xDB096B85, 0x92F17FEB}, "Ctrl + NumPad 0"},       -- Left Control + Num0
+        {{0xDB096B85, 0x5C3F1C43}, "Ctrl + NumPad 5"},       -- Left Control + Num5
+        {{0xDB096B85, 0x064D1698}, "Ctrl + Home"},           -- Left Control + Home
+        {{0xDB096B85, 0x4686B273}, "Ctrl + Insert"},         -- Left Control + Insert
+        {{0xDB096B85, 0x4E42696E}, "Ctrl + Delete"},         -- Left Control + Delete
+        {{0xDB096B85, 0x446258B6}, "Ctrl + PageUp"},         -- Left Control + PgUp
+        {{0xDB096B85, 0x3C3DD371}, "Ctrl + PageDown"}        -- Left Control + PgDn
     },
     lang = {
         kickreason = "Cheat Menu detected"
