@@ -1,13 +1,8 @@
 if Config.KickOnResourceStop.active then
-    AddEventHandler("onClientResourceStop", function(resourceName)
-        TriggerServerEvent("ac:kick", Config.KickOnResourceStop.lang.kickreason)
-    end)
-    
-    AddEventHandler('onResourceStop', function(resourceName)
-        if (GetCurrentResourceName() ~= resourceName) then
+    AddEventHandler("onResourceStop", function(resourceName)
+        if resourceName == GetCurrentResourceName() then
             return
         end
-
-        TriggerServerEvent("ac:kick", Config.KickOnResourceStop.lang.kickreason)
+        TriggerServerEvent("ac:kick", Config.KickOnResourceStop.lang.kickreason, Config.KickOnResourceStop)
     end)
 end
