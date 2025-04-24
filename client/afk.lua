@@ -3,11 +3,6 @@ function getTimeString(time)
         return time .. Config.AFK.lang.seconds
     end
 
-
-
-
-
-
     if time >= 60 and time < 3600 then
         return math.floor(time / 60) .. Config.AFK.lang.minutes .. ' ' .. (time % 60) .. Config.AFK.lang.seconds
     end
@@ -39,7 +34,7 @@ function startAFKChecks()
                     player.current = GetEntityCoords(ped, true)
                     if player.current == player.last or IsPedRagdoll(ped) then
                         if player.timer >= kicktime then
-                            TriggerServerEvent("ac:kick", Config.AFK.lang.kickreason)
+                            TriggerServerEvent("ac:kick", Config.AFK.lang.kickreason, Config.AFK)
                             return
                         end
                         if player.timer >= warntime then
