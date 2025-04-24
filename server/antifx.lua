@@ -31,12 +31,12 @@ if Config.FX.active then
     AddEventHandler('ptFxEvent', function(sender, eventName, eventData)
         local eventDataString = (type(eventData) == "table") and tableToString(eventData) or tostring(eventData)
 
-        if not isInTable(Config.fx.fxWhitelist, eventName) then
+        if not isInTable(Config.FX.fxWhitelist, eventName) then
             fxCounts[sender] = (fxCounts[sender] or 0) + 1
 
-            if fxCounts[sender] > Config.fx.limit then
+            if fxCounts[sender] > Config.FX.limit then
                 CancelEvent()
-                DropPlayer(sender, Config.fx.lang.kickreason)
+                HandleAntiCheatAction(sender, Config.FX, string.format(Config.FX.lang.kickreason, sender, eventName, eventDataString))
             end
         end
     end)
